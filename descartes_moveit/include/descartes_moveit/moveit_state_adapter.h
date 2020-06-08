@@ -25,7 +25,7 @@
 #include <moveit/robot_model/robot_model.h>
 #include <moveit/robot_model_loader/robot_model_loader.h>
 #include <string>
-
+#include <mutex>
 namespace descartes_moveit
 {
 /**
@@ -95,6 +95,9 @@ public:
    *        'initialize()'.
    */
   void setState(const moveit::core::RobotState &state);
+  
+//! planning scene public
+  planning_scene::PlanningScenePtr planning_scene_;
 
 protected:
   /**
@@ -128,7 +131,7 @@ protected:
 
   mutable moveit::core::RobotStatePtr robot_state_;
 
-  planning_scene::PlanningScenePtr planning_scene_;
+  // planning_scene::PlanningScenePtr planning_scene_;
 
   robot_model::RobotModelConstPtr robot_model_ptr_;
 
